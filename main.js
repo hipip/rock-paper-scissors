@@ -42,5 +42,3 @@ function game() {
   else if (playerScore < computerScore) alert("you lose ;( !");
   else alert("it's a draw");
 }
-
-game();
