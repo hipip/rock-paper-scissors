@@ -64,5 +64,5 @@ function getDaytimeName(time) {
 }
 
 const d = new Date();
-console.log(getDayName(d.getDay()));
-console.log(getDaytimeName(d.getHours()));
+document.querySelector(".day-time").innerText =
+  getDayName(d.getDay()) + " " + getDaytimeName(d.getHours());
