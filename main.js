@@ -42,3 +42,27 @@ function game() {
   else if (playerScore < computerScore) alert("you lose ;( !");
   else alert("it's a draw");
 }
+
+function getDayName(num) {
+  const DAYS = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return DAYS[num];
+}
+
+function getDaytimeName(time) {
+  if (time >= 5 && time <= 12) return "Morning";
+  else if (time > 12 && time <= 17) return "Afternoon";
+  else if (time > 17 && time <= 21) return "Evening";
+  else return "Night";
+}
+
+const d = new Date();
+console.log(getDayName(d.getDay()));
+console.log(getDaytimeName(d.getHours()));
