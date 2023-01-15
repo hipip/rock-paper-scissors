@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+ :root{
+    --morning-bg: linear-gradient(#C6E4EE 0%, #C6E4EE 20%, #FED1AE 40%, #FAA0B9 60%, #CB7DCB 80%, #757ECB 100%);
+    --night-bg: linear-gradient(#161A33 0%, #23213E 25%, #3D284C 50%, #59365C 75%, #C28187 100%);
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -16,9 +21,19 @@ img{
 
 body{
     height: 100vh;
-    background: linear-gradient(#C6E4EE 0%, #C6E4EE 20%, #FED1AE 40%, #FAA0B9 60%, #CB7DCB 80%, #757ECB 100%);
+    background: var(--night-bg);
+    background-size: 300% 300%;
+    background-position: 0 0; 
     overflow: hidden;
+    animation: wtf 6s ease forwards;
 }
+
+@keyframes wtf{
+    from{background-position: 0 0;}
+    to{background-position: 100% 100%;
+    background-size: 100% 100%;}
+}
+
 .main{
     position: relative;
     display: flex;
@@ -54,6 +69,32 @@ body{
     width: 10vw;
     height: 10vw;
     border-radius: 50%;
-    translate: -30vw 40vh;
-    background-color: #fcd14d;
+    background-color: rgb(235, 242, 255);
+    animation: moonGlow 4s ease infinite,
+     up 4s ease-out both;
+    transition: transform 4s ease;
+    translate: 30vw -12vw;
+}
+
+
+.test{
+    transform: translate(40vw,-30vw);
+}
+
+@keyframes up {
+    from{
+        translate: -38vw -40vw;
+    }
+    to{
+        translate: 30vw -12vw;
+    }
+}
+
+@keyframes moonGlow {
+    0%,100%{
+        box-shadow: 0 0 0 0;
+    }
+    50%{
+        box-shadow: 0 0 80px -5px rgba(255, 255, 255, 0.5);
+    }
 }

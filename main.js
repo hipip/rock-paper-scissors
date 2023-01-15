@@ -66,3 +66,8 @@ function getDaytimeName(time) {
 const d = new Date();
 document.querySelector(".day-time").innerText =
   getDayName(d.getDay()) + " " + getDaytimeName(d.getHours());
+
+document.querySelector(".play-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  document.querySelector(".circle").classList.add("test");
+});
