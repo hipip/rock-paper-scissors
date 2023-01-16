@@ -71,4 +71,5 @@ document.querySelector(".play-btn").addEventListener("click", (e) => {
   e.preventDefault();
   document.querySelector(".hero-main").classList.add("wtf");
   document.querySelector(".game-container").classList.add("xD");
+  document.querySelector(".overlay").classList.add("black-overlay");
 });
