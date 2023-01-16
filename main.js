@@ -1,75 +1,151 @@
+// getting some elements that we will need to modify
+const splashScreen = document.querySelector(".splash-screen");
+const gameUI = document.querySelector(".game-container");
+const playBtn = document.querySelector(".play-btn");
+const rpsBtns = document.querySelectorAll(".game-btn");
+const circle = document.querySelector(".circle");
+const overlay = document.querySelector(".overlay");
+const dayTimeSpan = document.querySelector(".day-time");
+const mainTitle = document.querySelector(".main-title");
+const userScore = document.querySelector(".user-score");
+const computerScore = document.querySelector(".computer-score");
+const roundResultText = document.querySelector(".round-text");
+
+// score variables
+let scoreComputer = 0,
+    scoreUser = 0;
+
+/* Game logic functions */
 function getComputerChoice() {
-  const choices = ["rock", "paper", "scissors"];
-  return choices[Math.round(Math.random() * 2)];
+    const choices = ["rock", "paper", "scissors"];
+    return choices[Math.round(Math.random() * 2)];
 }
 
+// takes a player selection and a computer one and returns [status,text]
+// interpret status: 0 : draw, -1 lose, 1 win
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
-    return [0, `It's a Draw !`];
-  } else if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
-    (playerSelection === "paper" && computerSelection === "rock") ||
-    (playerSelection === "scissors" && computerSelection === "paper")
-  ) {
-    return [1, `You Win! ${playerSelection} beats ${computerSelection}`];
-  } else {
-    return [-1, `You Lose! ${computerSelection} beats ${playerSelection}`];
-  }
+    if (playerSelection === computerSelection) {
+        return [0, `It's a Draw !`];
+    } else if (
+        (playerSelection === "rock" && computerSelection === "scissors") ||
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "scissors" && computerSelection === "paper")
+    ) {
+        return [1, `You Win! ${playerSelection} beats ${computerSelection}`];
+    } else {
+        return [-1, `You Lose! ${computerSelection} beats ${playerSelection}`];
+    }
+}
+
+function playRoundEvent(e) {
+    e.preventDefault();
+    const userChoice = e.currentTarget.id;
+    const computerChoice = getComputerChoice();
+    const roundResults = playRound(userChoice, computerChoice);
+    const status = roundResults[0];
+    const resultText = roundResults[1];
+    updateScore(status);
+    displayRoundResult(status, resultText);
 }
 
 function game() {
-  let playerScore = 0,
-    computerScore = 0;
-  for (let i = 0; i < 5; i++) {
-    do {
-      var userChoice = prompt("rock, paper or scissors ? ");
-    } while (
-      userChoice !== "rock" &&
-      userChoice !== "paper" &&
-      userChoice !== "scissors"
-    );
-    const computerChoice = getComputerChoice();
-    const resultArr = playRound(userChoice, computerChoice);
-    const status = resultArr[0];
-    const str = resultArr[1];
+    let playerScore = 0,
+        computerScore = 0;
+    for (let i = 0; i < 5; i++) {
+        do {
+            var userChoice = prompt("rock, paper or scissors ? ");
+        } while (
+            userChoice !== "rock" &&
+            userChoice !== "paper" &&
+            userChoice !== "scissors"
+        );
+        const computerChoice = getComputerChoice();
+        const resultArr = playRound(userChoice, computerChoice);
+        const status = resultArr[0];
+        const str = resultArr[1];
 
-    if (status === 1) playerScore++;
-    else if (status === -1) computerScore++;
-    alert(str);
-  }
+        if (status === 1) playerScore++;
+        else if (status === -1) computerScore++;
+        alert(str);
+    }
 
-  if (playerScore > computerScore) alert("Congratz you won !");
-  else if (playerScore < computerScore) alert("you lose ;( !");
-  else alert("it's a draw");
+    if (playerScore > computerScore) alert("Congratz you won !");
+    else if (playerScore < computerScore) alert("you lose ;( !");
+    else alert("it's a draw");
 }
 
+/* Game UI functions */
 function getDayName(num) {
-  const DAYS = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  return DAYS[num];
+    const DAYS = [
+        "sunday",
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+    ];
+    return DAYS[num];
 }
 
 function getDaytimeName(time) {
-  if (time >= 5 && time <= 12) return "Morning";
-  else if (time > 12 && time <= 17) return "Afternoon";
-  else if (time > 17 && time <= 21) return "Evening";
-  else return "Night";
+    if (time >= 5 && time <= 12) return "morning";
+    else if (time > 12 && time <= 17) return "afternoon";
+    else if (time > 17 && time <= 20) return "evening";
+    else return "night";
 }
 
-const d = new Date();
-document.querySelector(".day-time").innerText =
-  getDayName(d.getDay()) + " " + getDaytimeName(d.getHours());
+function applyDayTimeStyles() {
+    const d = new Date();
+    // get the name of today
+    const day = getDayName(d.getDay());
+    // get the day time : morning, afternoon, or evening
+    const dayTime = getDaytimeName(d.getHours());
+    // update the body background according to the current day time
+    document.body.style.background = `var(--${dayTime}-bg)`;
+    // updating the text in the main heading to match your current time ;)
+    dayTimeSpan.innerText =
+        getDayName(d.getDay()) + " " + getDaytimeName(d.getHours());
+    // update the position of the sun (or sun)
+    circle.classList.add(`sun-${dayTime}`);
+    // change the color of the main heading text accordingly to time
+    mainTitle.style.color = `var(--${dayTime}-text-c)`;
+}
 
-document.querySelector(".play-btn").addEventListener("click", (e) => {
-  e.preventDefault();
-  document.querySelector(".hero-main").classList.add("wtf");
-  document.querySelector(".game-container").classList.add("xD");
-  document.querySelector(".overlay").classList.add("black-overlay");
+function startGameUI() {
+    // UI
+    splashScreen.classList.add("hide-left");
+    gameUI.classList.add("show-right");
+    overlay.classList.add("black");
+}
+
+function updateScore(status) {
+    if (status == -1) computerScore.innerText = ++scoreComputer;
+    else if (status === 1) userScore.innerText = ++scoreUser;
+}
+
+function displayRoundResult(status, text) {
+    const newElem = document.createElement("div");
+    newElem.classList.add("round-result");
+    newElem.innerText = text;
+    if (status === 0) newElem.classList.add("draw");
+    else if (status == 1) newElem.classList.add("win");
+    else newElem.classList.add("lose");
+    gameUI.append(newElem);
+
+    setInterval(() => {
+        newElem.classList.add("hide");
+    }, 1000);
+    setInterval(() => {
+        newElem.remove();
+    }, 1800);
+}
+
+playBtn.onclick = (e) => {
+    e.preventDefault();
+    startGameUI();
+};
+
+rpsBtns.forEach((btn) => {
+    btn.addEventListener("click", playRoundEvent);
 });

@@ -1,167 +1,255 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 :root {
-  --morning-bg: linear-gradient(
-    #c6e4ee 0%,
-    #c6e4ee 20%,
-    #fed1ae 40%,
-    #faa0b9 60%,
-    #cb7dcb 80%,
-    #757ecb 100%
-  );
-  --afternoon-bg: linear-gradient(#83d8ff 0%, #3dabde 50%, #ff945f);
-  --evening-bg: linear-gradient(
-    #126390 0%,
-    #829dae50 33%,
-    #c3632c 66%,
-    #593950 80%
-  );
-  --night-bg: linear-gradient(
-    #161a33 0%,
-    #23213e 25%,
-    #3d284c 50%,
-    #59365c 75%,
-    #c28187 100%
-  );
+    --morning-bg: linear-gradient(
+        #c6e4ee 0%,
+        #c6e4ee 20%,
+        #fed1ae 40%,
+        #faa0b9 60%,
+        #cb7dcb 80%,
+        #757ecb 100%
+    );
+    --afternoon-bg: linear-gradient(#83d8ff 0%, #3dabde 50%, #ff945f);
+    --evening-bg: linear-gradient(
+        #126390 0%,
+        #829dae50 33%,
+        #c3632c 66%,
+        #593950 80%
+    );
+    --night-bg: linear-gradient(#1e223d 0%, #140d24 100%);
+    --morning-text-c: black;
+    --evening-text-c: black;
+    --afternoon-text-c: black;
+    --night-text-c: white;
 }
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 img {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 }
 
-.weird {
-  position: absolute;
-  min-height: 450px;
+.form {
+    position: absolute;
+    filter: brightness(25%);
+    min-height: 450px;
 }
 
 body {
-  height: 100vh;
-  background: var(--morning-bg);
-  overflow: hidden;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .main {
-  position: relative;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  height: 75%;
-  text-align: center;
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    text-align: center;
 }
 
-.hero-main,
+.splash-screen,
 .game-container {
-  position: absolute;
-  transition: 1s cubic-bezier(0.92, 0.16, 0.12, 0.9);
-  z-index: 4;
+    position: absolute;
+    transition: 0.8s cubic-bezier(0.79, 0.1, 0.13, 0.92);
+    z-index: 4;
 }
 
 .game-container {
-  translate: 100vw 0;
+    translate: 200vw 0;
 }
 
-.wtf {
-  translate: -100vw 0;
+.hide-left {
+    translate: -200vw 0;
 }
-.xD {
-  translate: 0;
+.show-right {
+    translate: 0;
 }
 
 .main-title {
-  padding: 1em;
-  font-size: 3.3em;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 1000;
+    padding: 1em;
+    font-size: 3.3em;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 1000;
+}
+
+.day-time {
+    text-transform: capitalize;
 }
 
 .play-btn {
-  font-family: "Open Sans", sans-serif;
-  cursor: pointer;
-  font-size: 1.8em;
-  font-weight: 700;
-  padding: 0.5em 4em;
-  border: 1px solid white;
-  border-radius: 30px;
-  color: black;
-  background-color: white;
+    position: relative;
+    font-family: "Open Sans", sans-serif;
+    cursor: pointer;
+    font-size: 1.8em;
+    font-weight: 700;
+    padding: 0.5em 4em;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    border: 1px solid white;
+    transition: 0.6s ease;
+    background-color: transparent;
+}
+
+.play-btn:hover {
+    color: black;
+    background-color: white;
 }
 
 .circle {
-  position: absolute;
-  z-index: -1;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: rgb(255, 213, 158);
-  translate: -30vw 42vh;
+    position: absolute;
+    z-index: -1;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: rgb(255, 213, 158);
+    transition: translate 2s ease;
+}
+
+.sun-morning {
+    bottom: 0vh;
+    left: 15vw;
+}
+
+.sun-afternoon {
+    top: 15vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 156, 44);
+    box-shadow: 0 0 50px -5px rgb(255, 166, 0);
+}
+
+.sun-evening {
+    top: 80vh;
+    left: 60vw;
+    background-color: rgb(255, 145, 0);
+}
+
+.sun-night {
+    /* it's actually the moon ;) */
+    background-color: transparent;
+    right: 15vw;
+    top: 2vh;
+    box-shadow: 40px 10px 0 0 white;
 }
 
 .game-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 2em;
 }
 
 .game-title {
-  font-size: 3em;
-  font-weight: 900;
-  color: white;
+    font-size: 3em;
+    font-weight: 900;
+    color: white;
 }
 .score {
-  color: rgb(226, 226, 226);
-  font-size: 1.5em;
+    color: rgb(226, 226, 226);
+    font-size: 1.5em;
 }
 
 .game-title,
 .score {
-  margin: 0.5em 0;
+    margin: 0.5em 0;
 }
 
 .btns-container {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  padding: 1em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    padding: 1em;
 }
 
 .game-btn {
-  cursor: pointer;
-  margin: 4em;
-  padding: 2em 4em;
-  background: none;
-  border: none;
-  transition: 0.3s ease;
-  border: 1px solid white;
-  border-radius: 25px;
+    cursor: pointer;
+    margin: 4em;
+    padding: 2em 4em;
+    background: none;
+    border: none;
+    transition: 0.3s ease;
+    border: 1px solid white;
+    border-radius: 25px;
+    box-shadow: 0 0 0 0 #0084ff;
 }
 
 .game-btn:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 45px -2px orange;
+    transform: scale(1.15);
+    box-shadow: 0 0 50px -2px #0084ff;
 }
 
 .hand-img {
-  width: 100px;
+    width: 100px;
+}
+
+.round-result {
+    position: absolute;
+    top: 90%;
+    left: 0;
+    width: 100%;
+    padding: 1em 2em;
+    font-weight: 600;
+    color: white;
+    font-size: 1.2em;
+    border-radius: 30px;
+    opacity: 1;
+    transition: 0.6s ease;
+    animation: up-anim 0.4s ease;
+    transform-origin: center;
+}
+.draw {
+    background-color: #0084ff;
+}
+.lose {
+    background-color: red;
+}
+.win {
+    background-color: green;
+}
+
+.hide {
+    translate: 0 200%;
+    opacity: 0;
+}
+
+@keyframes up-anim {
+    from {
+        opacity: 0;
+        translate: 0 100%;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 .overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transition: 1s cubic-bezier(0.92, 0.16, 0.12, 0.9);
-  z-index: 3;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 1s ease;
+    z-index: 3;
 }
 
-.black-overlay {
-  backdrop-filter: blur(25px);
-  background-color: rgba(0, 0, 0, 0.6);
+.black {
+    backdrop-filter: blur(25px);
+    background-color: rgba(0, 0, 0, 0.4);
 }
