@@ -69,5 +69,6 @@ document.querySelector(".day-time").innerText =
 
 document.querySelector(".play-btn").addEventListener("click", (e) => {
   e.preventDefault();
-  document.querySelector(".circle").classList.add("test");
+  document.querySelector(".hero-main").classList.add("wtf");
+  document.querySelector(".game-container").classList.add("xD");
 });

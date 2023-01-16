@@ -1,120 +1,149 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
- :root{
-    --morning-bg: linear-gradient(#C6E4EE 0%, #C6E4EE 20%, #FED1AE 40%, #FAA0B9 60%, #CB7DCB 80%, #757ECB 100%);
-    --afternoon-bg: linear-gradient(#83d8ff 0%,#3DABDE 50%, #ff945f);
-    --evening-bg: linear-gradient(#126390 0%,#829DAE50 33%,#C3632C 66%,#593950 80%);
-    --night-bg: linear-gradient(#161A33 0%, #23213E 25%, #3D284C 50%, #59365C 75%, #C28187 100%);
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+:root {
+  --morning-bg: linear-gradient(
+    #c6e4ee 0%,
+    #c6e4ee 20%,
+    #fed1ae 40%,
+    #faa0b9 60%,
+    #cb7dcb 80%,
+    #757ecb 100%
+  );
+  --afternoon-bg: linear-gradient(#83d8ff 0%, #3dabde 50%, #ff945f);
+  --evening-bg: linear-gradient(
+    #126390 0%,
+    #829dae50 33%,
+    #c3632c 66%,
+    #593950 80%
+  );
+  --night-bg: linear-gradient(
+    #161a33 0%,
+    #23213e 25%,
+    #3d284c 50%,
+    #59365c 75%,
+    #c28187 100%
+  );
 }
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-img{
-    width: 100%;
-    height: auto;
+img {
+  width: 100%;
+  height: auto;
 }
 
- .weird{
-    position: absolute;
-    min-height: 450px;
+.weird {
+  position: absolute;
+  min-height: 450px;
 }
 
-body{
-    height: 100vh;
-    background: var(--morning-bg);
-    overflow: hidden;
+body {
+  height: 100vh;
+  background: var(--morning-bg);
+  overflow: hidden;
 }
 
-.main{
-    position: relative;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    height: 75%;
-    text-align: center;
+.main {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 75%;
+  text-align: center;
 }
 
 .hero-main,
-.game-container{
-    position: absolute;
-}
-.hero-main{
-    right: 10%;
-}
-.game-container{
-    left: 500%;
+.game-container {
+  position: absolute;
+  transition: 1.5s cubic-bezier(0.92, 0.16, 0.12, 0.9);
 }
 
-
-.main-title{
-    padding: 1em;
-    font-size: 3.3em;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 1000;
+.game-container {
+  translate: 100vw 0;
 }
 
-.play-btn{
-    font-family: "Open Sans", sans-serif;
-    cursor: pointer;
-    font-size: 1.8em;
-    font-weight: 700;
-    padding: .5em 4em;
-    border: 1px solid white;
-    border-radius: 30px;
-    color:black;
-    background-color: white;
+.wtf {
+  translate: -100vw 0;
+}
+.xD {
+  translate: 0;
 }
 
-.circle{
-    position: absolute;
-    z-index: -1;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-color: rgb(255, 213, 158);
-    translate: -30vw 42vh;
+.main-title {
+  padding: 1em;
+  font-size: 3.3em;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 1000;
 }
 
-.game-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2em;
+.play-btn {
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
+  font-size: 1.8em;
+  font-weight: 700;
+  padding: 0.5em 4em;
+  border: 1px solid white;
+  border-radius: 30px;
+  color: black;
+  background-color: white;
 }
 
-.game-title,.score{
-    margin: .5em 0;
+.circle {
+  position: absolute;
+  z-index: -1;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgb(255, 213, 158);
+  translate: -30vw 42vh;
 }
 
-.btns-container{
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    padding: 1em;
+.game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
 }
 
-.btn{
-    cursor: pointer;
-    margin:4em;
-    padding: 1em;
-    background: none;
-    border: none;
-    filter:drop-shadow(0 0 15px white);
-    transition: .3s ease-in-out;
+.game-title {
+  font-size: 3em;
+  font-weight: 900;
+}
+.score {
+  font-size: 1.5em;
 }
 
-.btn:hover{
-    transform: scale(1.2);
+.game-title,
+.score {
+  margin: 0.5em 0;
 }
 
+.btns-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  padding: 1em;
+}
 
+.btn {
+  cursor: pointer;
+  margin: 4em;
+  padding: 1em;
+  background: none;
+  border: none;
+  filter: drop-shadow(0 0 15px white);
+  transition: 0.3s ease-in-out;
+}
 
+.btn:hover {
+  transform: scale(1.2);
+}
 
-.hand-img{
-    width: 100px;
+.hand-img {
+  width: 100px;
 }
