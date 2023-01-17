@@ -2,6 +2,8 @@
 
 this is my creative implementation of the Rock Paper Scissors game for the Odin Project.
 
+you can find the live version of it https://somehowalive.github.io/rock-paper-scissors/.
+
 ![screenshot showing the website](./assets/screen1.jpg)
 ![screenshot showing the game ui](./assets/screen2.png)
 
