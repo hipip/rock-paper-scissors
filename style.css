@@ -2,10 +2,9 @@
 :root {
     --morning-bg: linear-gradient(
         #c6e4ee 0%,
-        #c6e4ee 20%,
-        #fed1ae 40%,
-        #faa0b9 60%,
-        #cb7dcb 80%,
+        #fed1ae 25%,
+        #faa0b9 50%,
+        #cb7dcb 75%,
         #757ecb 100%
     );
     --afternoon-bg: linear-gradient(#83d8ff 0%, #3dabde 50%, #ff945f);
@@ -76,7 +75,7 @@ body {
     padding: 1em;
     font-size: 3.3em;
     font-family: "Open Sans", sans-serif;
-    font-weight: 1000;
+    font-weight: 600;
 }
 
 .day-time {
