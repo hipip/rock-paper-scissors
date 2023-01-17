@@ -1,6 +1,7 @@
 # Project: Rock Paper Scissors
 
 this is my creative implementation of the Rock Paper Scissors game for the Odin Project.
+
 ![screenshot showing the website](./assets/screen1.jpg)
 ![screenshot showing the game ui](./assets/screen2.png)
 
