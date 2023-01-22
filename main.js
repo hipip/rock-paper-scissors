@@ -48,32 +48,6 @@ function playRoundEvent(e) {
     displayRoundResult(status, resultText);
 }
 
-function game() {
-    let playerScore = 0,
-        computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        do {
-            var userChoice = prompt("rock, paper or scissors ? ");
-        } while (
-            userChoice !== "rock" &&
-            userChoice !== "paper" &&
-            userChoice !== "scissors"
-        );
-        const computerChoice = getComputerChoice();
-        const resultArr = playRound(userChoice, computerChoice);
-        const status = resultArr[0];
-        const str = resultArr[1];
-
-        if (status === 1) playerScore++;
-        else if (status === -1) computerScore++;
-        alert(str);
-    }
-
-    if (playerScore > computerScore) alert("Congratz you won !");
-    else if (playerScore < computerScore) alert("you lose ;( !");
-    else alert("it's a draw");
-}
-
 /* Game UI functions */
 function getDayName(num) {
     const DAYS = [

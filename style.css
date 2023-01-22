@@ -242,7 +242,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    transition: 0.5s ease;
+    transition: 0.5s linear;
     z-index: 3;
 }
 
