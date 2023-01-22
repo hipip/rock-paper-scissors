@@ -112,7 +112,7 @@ function displayRoundResult(status, text) {
     }, 1000);
     setInterval(() => {
         newElem.remove();
-    }, 1800);
+    }, 1600);
 }
 
 playBtn.onclick = (e) => {
