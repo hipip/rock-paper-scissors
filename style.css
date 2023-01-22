@@ -95,13 +95,11 @@ body {
     border: 1px solid white;
     transition: 0.6s ease;
     background-color: transparent;
-    box-shadow: 0 0 0 0 #0084ff;
 }
 
 .play-btn:hover {
     color: black;
     background-color: white;
-    box-shadow: 0 0 15px 0 #0084ff;
 }
 
 .circle {
@@ -177,13 +175,15 @@ body {
     padding: 2em 4em;
     background: none;
     border: none;
-    transition: 0.2s ease;
+    transition: 0.3s ease;
     border: 1px solid white;
     border-radius: 25px;
+    box-shadow: 0 0 0 0 #0084ff;
 }
 
 .game-btn:hover {
     transform: scale(1.15);
+    box-shadow: 0 0 15px 0 #0084ff;
 }
 
 .hand-img {
