@@ -18,7 +18,7 @@ let scoreComputer = 0,
 /* Game logic functions */
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
-    return choices[Math.round(Math.random() * 2)];
+    return choices[Math.round(Math.random() * choices.length)];
 }
 
 // takes a player selection and a computer one and returns [status,text]
@@ -35,17 +35,6 @@ function playRound(playerSelection, computerSelection) {
     } else {
         return [-1, `You Lose! ${computerSelection} beats ${playerSelection}`];
     }
-}
-
-function playRoundEvent(e) {
-    e.preventDefault();
-    const userChoice = e.currentTarget.id;
-    const computerChoice = getComputerChoice();
-    const roundResults = playRound(userChoice, computerChoice);
-    const status = roundResults[0];
-    const resultText = roundResults[1];
-    updateScore(status);
-    displayRoundResult(status, resultText);
 }
 
 /* Game UI functions */
@@ -113,6 +102,29 @@ function displayRoundResult(status, text) {
     setInterval(() => {
         newElem.remove();
     }, 1600);
+}
+
+function displayWinner() {
+    console.log("the winner is ");
+    console.log(
+        scoreUser === 5
+            ? document.querySelector(".player-name").innerText
+            : "computer"
+    );
+    scoreUser = 0;
+    scoreComputer = 0;
+}
+
+function playRoundEvent(e) {
+    e.preventDefault();
+    const userChoice = e.currentTarget.id;
+    const computerChoice = getComputerChoice();
+    const roundResults = playRound(userChoice, computerChoice);
+    const status = roundResults[0];
+    const resultText = roundResults[1];
+    updateScore(status);
+    if (scoreComputer === 5 || scoreUser === 5) displayWinner();
+    else displayRoundResult(status, resultText);
 }
 
 playForm.onsubmit = (e) => {

@@ -126,9 +126,9 @@ body {
 
 .circle {
     position: absolute;
-    z-index: -1;
-    width: 200px;
-    height: 200px;
+    z-index: -3;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     background-color: rgb(255, 213, 158);
     transition: translate 2s ease;
@@ -156,9 +156,9 @@ body {
 .sun-night {
     /* it's actually the moon ;) */
     background-color: transparent;
-    right: 15vw;
-    top: 2vh;
-    box-shadow: 40px 10px 0 0 white;
+    right: 10vw;
+    top: 6vh;
+    box-shadow: 32px 5px 0 0 white;
 }
 
 .game-container {
