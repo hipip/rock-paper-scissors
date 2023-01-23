@@ -1,50 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
-
-<body onload="applyDayTimeStyles()">
-    <div class="overlay"></div>
-    <div class="main">
-        <div class="splash-screen">
-            <h1 class="main-title">
-                Hi Human, are you bored on a
-                <span class="day-time"></span> ?
-                <br />
-                How about you play rock paper scissors with me ?
-            </h1>
-            <button class="play-btn">play</button>
-        </div>
-        <div class="game-container hidden">
-            <div>
-                <h1 class="game-title">Rock Paper Scissors</h1>
-                <p class="score">
-                    You <span class="user-score">0</span> Computer
-                    <span class="computer-score">0</span>
-                </p>
+    <body onload="applyDayTimeStyles()">
+        <div class="overlay"></div>
+        <div class="main">
+            <div class="splash-screen">
+                <h1 class="main-title">
+                    Hi Human, are you bored on a
+                    <span class="day-time"></span> ?
+                    <br />
+                    How about you play rock paper scissors with me ?
+                </h1>
+                <input type="text" name="player-name" id="player-name" />
+                <button class="play-btn">play</button>
             </div>
-            <div class="btns-container">
-                <button class="game-btn" id="rock">
-                    <img src="./assets/rock.png" alt="hand doing rock sign" class="hand-img" />
-                </button>
-                <button class="game-btn" id="paper">
-                    <img src="./assets/paper.png" alt="hand doing paper sign" class="hand-img" />
-                </button>
-                <button class="game-btn" id="scissors">
-                    <img src="./assets/scissors.png" alt="hand doing scissors sign" class="hand-img" />
-                </button>
+            <div class="game-container hidden">
+                <div>
+                    <h1 class="game-title">Rock Paper Scissors</h1>
+                    <p class="score">
+                        You <span class="user-score">0</span> Computer
+                        <span class="computer-score">0</span>
+                    </p>
+                </div>
+                <div class="btns-container">
+                    <button class="game-btn" id="rock">
+                        <img
+                            src="./assets/rock.png"
+                            alt="hand doing rock sign"
+                            class="hand-img"
+                        />
+                    </button>
+                    <button class="game-btn" id="paper">
+                        <img
+                            src="./assets/paper.png"
+                            alt="hand doing paper sign"
+                            class="hand-img"
+                        />
+                    </button>
+                    <button class="game-btn" id="scissors">
+                        <img
+                            src="./assets/scissors.png"
+                            alt="hand doing scissors sign"
+                            class="hand-img"
+                        />
+                    </button>
+                </div>
+            </div>
+            <div class="round-overlay">
+                <h1 class="round-result"></h1>
+                <div class="user-choice"></div>
+                <div class="computer-choice"></div>
             </div>
         </div>
-    </div>
-    <div class="circle"></div>
-    <img src="./assets/form.svg" alt="a weird form" class="form" />
-</body>
-<script src="main.js"></script>
-
+        <div class="circle"></div>
+        <img src="./assets/form.svg" alt="a weird form" class="form" />
+    </body>
+    <script src="main.js"></script>
 </html>
