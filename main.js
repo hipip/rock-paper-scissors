@@ -1,7 +1,7 @@
 // getting some elements that we will need to modify
 const splashScreen = document.querySelector(".splash-screen");
 const gameUI = document.querySelector(".game-container");
-const playBtn = document.querySelector(".play-btn");
+const playForm = document.querySelector(".play-form");
 const rpsBtns = document.querySelectorAll(".game-btn");
 const circle = document.querySelector(".circle");
 const overlay = document.querySelector(".overlay");
@@ -115,9 +115,13 @@ function displayRoundResult(status, text) {
     }, 1600);
 }
 
-playBtn.onclick = (e) => {
+playForm.onsubmit = (e) => {
     e.preventDefault();
-    startGameUI();
+    if (document.querySelector(".player-name-inp").value !== "") {
+        document.querySelector(".player-name").innerText =
+            document.querySelector(".player-name-inp").value;
+        startGameUI();
+    }
 };
 
 rpsBtns.forEach((btn) => {
